@@ -58,14 +58,18 @@ export default class Sidebar extends HTMLElement {
 
     set opened(val) {
         if (val) {
-            console.log('Close menu...');
+            console.log('Open menu...');
             this.removeEventListener('transitionend', this._hideVisibility);
             this.style.visibility = 'visible';
             this.classList.remove('hidden');
+            document.querySelector('body').style.height = '100%';
+            document.querySelector('body').style.overflow = 'hidden';
         } else {
-            console.log('Open menu...');
+            console.log('Close menu...');
             this.classList.add('hidden');
             this.addEventListener('transitionend', this._hideVisibility);
+            document.querySelector('body').style.height = 'auto';
+            document.querySelector('body').style.overflow = 'auto';
         }
     }
 
