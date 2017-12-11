@@ -30,6 +30,7 @@ sidebar-menu main {
     background-color: black;
     overflow-x: hidden;
     transition: max-width 1s;
+    white-space: nowrap;
 }
 
 sidebar-menu main ul {
@@ -59,11 +60,11 @@ sidebar-menu main li:hover {
 }
 
 @media screen and (max-height: 450px) {
-    .sidebar {
+    sidebar-menu {
         padding-top: 15px;
     }
 
-    .sidebar li {
+    sidebar-menu li {
         font-size: 18px;
     }
 }

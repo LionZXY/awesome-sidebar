@@ -8,6 +8,16 @@ export default class Sidebar extends HTMLElement {
             this.opened = false;
         });
 
+        this.menu.addEventListener('click', e => {
+            e.stopPropagation();
+        });
+
+        this.menu.querySelectorAll('li').forEach(item => {
+            item.addEventListener('click', e =>
+                this.opened = false
+            )
+        });
+
         this.side = this.side;
         this.opened = this.opened;
     }

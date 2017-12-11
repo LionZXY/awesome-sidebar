@@ -24,9 +24,8 @@ module.exports = {
                             ['transform-es2015-classes']],
                     }
                 }
-            },
-            {
-                test: /\.css$/,
+            }, {
+                test: /\.css/,
                 use: ['style-loader', 'css-loader']
             }
         ]
