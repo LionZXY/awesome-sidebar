@@ -1,9 +1,10 @@
+import getTransitionDuration from 'get-transition-duration';
+
 export default class Sidebar extends HTMLElement {
     constructor() {
         super();
         this.menu = this.querySelector('main[slot="content"]')
 
-        console.log(this.menu);
         this.addEventListener('click', e => {
             this.opened = false;
         });
@@ -50,10 +51,28 @@ export default class Sidebar extends HTMLElement {
 
     set opened(val) {
         if (val) {
+            console.log('Close menu...');
+            this.removeEventListener('transitionend', this._hideVisibility);
+            this.style.visibility = 'visible';
             this.classList.remove('hidden');
         } else {
+            console.log('Open menu...');
             this.classList.add('hidden');
+            this.addEventListener('transitionend', this._hideVisibility);
         }
+    }
+
+    open() {
+        this.opened = true;
+    }
+
+    close() {
+        this.opened = false;
+    }
+
+    _hideVisibility() {
+        this.style.visibility = 'hidden';
+        this.removeEventListener('transitionend', this._hideVisibility);
     }
 }
 
