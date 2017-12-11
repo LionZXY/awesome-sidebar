@@ -27,6 +27,9 @@ export default class Sidebar extends HTMLElement {
         });
 
         this.side = this.side;
+        if (!this.opened) {
+            this._hideVisibility();
+        }
         this.opened = this.opened;
     }
 
@@ -53,10 +56,11 @@ export default class Sidebar extends HTMLElement {
     }
 
     get opened() {
-        return this.getAttribute('opened');
+        return this.getAttribute('opened') === 'true';
     }
 
     set opened(val) {
+        this.setAttribute('opened', val.toString());
         if (val) {
             console.log('Open menu...');
             this.removeEventListener('transitionend', this._hideVisibility);
