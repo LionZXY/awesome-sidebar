@@ -9,6 +9,13 @@ export default class Sidebar extends HTMLElement {
             this.opened = false;
         });
 
+        document.addEventListener('keyup', e => {
+                if (e.keyCode === 27) {
+                    this.opened = false;
+                }
+            },
+            true /* grab event on tunnel, not on bubble */);
+
         this.menu.addEventListener('click', e => {
             e.stopPropagation();
         });
