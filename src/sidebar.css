@@ -7,10 +7,10 @@ sidebar-menu {
     left: 0;
     padding: 0;
     background-color: rgba(0, 0, 0, 0.5);
-    transition: background-color 1s;
+    transition: background-color .2s;
 }
 
-sidebar-menu.hidden main {
+main.hidden {
     max-width: 0;
 }
 
@@ -28,7 +28,7 @@ sidebar-menu main {
     padding: 8px 0;
     color: white;
     background-color: black;
-    transition: max-width 1s;
+    transition: max-width .8s;
     overflow-x: hidden;
     white-space: nowrap;
 }
@@ -60,11 +60,26 @@ sidebar-menu main li:hover {
 }
 
 @media screen and (max-height: 450px) {
-    sidebar-menu {
+    sidebar-menu main{
         padding-top: 15px;
     }
 
-    sidebar-menu li {
+    sidebar-menu main li {
         font-size: 18px;
+    }
+
+    sidebar-menu main {
+        height: 100%;
+        overflow-x: inherit;
+        white-space: normal;
+    }
+}
+
+@media screen and (max-device-width: 450px) {
+    sidebar-menu main {
+        width: 100%;
+        text-align: center;
+        overflow-x: inherit;
+        white-space: normal;
     }
 }

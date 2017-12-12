@@ -28,7 +28,7 @@ export default class Sidebar extends HTMLElement {
 
         this.side = this.side;
         if (!this.opened) {
-            this._hideVisibility();
+            this.style.visibility = 'hidden';
         }
         this.opened = this.opened;
     }
@@ -63,15 +63,20 @@ export default class Sidebar extends HTMLElement {
         this.setAttribute('opened', val.toString());
         if (val) {
             console.log('Open menu...');
-            this.removeEventListener('transitionend', this._hideVisibility);
-            this.style.visibility = 'visible';
+
             this.classList.remove('hidden');
+            this.menu.classList.remove('hidden');
+            this.style.visibility = 'visible';
+
             document.querySelector('body').style.height = '100%';
             document.querySelector('body').style.overflow = 'hidden';
         } else {
             console.log('Close menu...');
+
             this.classList.add('hidden');
-            this.addEventListener('transitionend', this._hideVisibility);
+            this.menu.classList.add('hidden');
+            this.style.visibility = 'hidden';
+
             document.querySelector('body').style.height = 'auto';
             document.querySelector('body').style.overflow = 'auto';
         }
@@ -83,11 +88,6 @@ export default class Sidebar extends HTMLElement {
 
     close() {
         this.opened = false;
-    }
-
-    _hideVisibility() {
-        this.style.visibility = 'hidden';
-        this.removeEventListener('transitionend', this._hideVisibility);
     }
 }
 
